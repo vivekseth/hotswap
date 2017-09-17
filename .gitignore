@@ -1,4 +1,4 @@
 *.o
-hardlink
-softlink
+dynamiclink
+hotswap
 libtest.dylib

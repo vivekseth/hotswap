@@ -1,4 +1,4 @@
-make: libtest.dylib hardlink softlink
+make: libtest.dylib dynamiclink hotswap
 
 dylib: libtest.dylib
 
@@ -8,21 +8,21 @@ libtest.dylib: libtest.o
 libtest.o: libtest.c
 	clang -o libtest.o -c libtest.c
 
-hardlink: hardlink.o
-	clang -o hardlink -ltest hardlink.o -L./
+dynamiclink: dynamiclink.o
+	clang -o dynamiclink -ltest dynamiclink.o -L./
 
-hardlink.o: hardlink.c
-	clang -o hardlink.o -c hardlink.c
+dynamiclink.o: dynamiclink.c
+	clang -o dynamiclink.o -c dynamiclink.c
 
-softlink: softlink.o
-	clang -o softlink softlink.o
+hotswap: hotswap.o
+	clang -o hotswap hotswap.o
 
-softlink.o: softlink.c
-	clang -o softlink.o -c softlink.c
+hotswap.o: hotswap.c
+	clang -o hotswap.o -c hotswap.c
 
 clean:
-	rm -f softlink
-	rm -f hardlink
+	rm -f hotswap
+	rm -f dynamiclink
 	rm -f libtest.dylib
 	rm -f *.o
 
